@@ -111,7 +111,7 @@ int main() {
             goto beggining;
         }
     }
-    void Pardavimas_FUNKCIJA (string valiuta) {
+    void Pirkimas_FUNKCIJA (string valiuta) {
         double kiekis, answer;
         cout << "Pasirinkite valiuta" << endl;
         beggining:
@@ -123,8 +123,8 @@ int main() {
                     cout << "Kiek nori pirkti " << valiuta << " kiekis?" <<endl;
             cin>>kiekis;       if (kiekis <= 0) {
                 cout << "Iveskite daugiau 0" <<endl;
-                goto Beg_GBP;}      answer = GBP_Pirkti * kiekis;
-            cout << "Eur "<< kiekis << " = " << answer << valiuta << endl;
+                goto Beg_GBP;}      answer = kiekis /GBP_Pirkti;
+            cout << valiuta << " " << kiekis << " = " << answer << " Eur" << endl;
 
         }else if (valiuta == "USD") {
             cout << "1 EUR = " << USD_Pirkti << " USD" <<endl;
@@ -132,8 +132,8 @@ int main() {
             cout << "Kiek nori pirkti " << valiuta << " kiekis?" <<endl;
             cin>>kiekis;       if (kiekis <= 0) {
                 cout << "Iveskite daugiau 0" <<endl;
-                goto Beg_USD;}  answer = USD_Pirkti * kiekis;
-            cout << "Eur "<< kiekis << " = " << answer << valiuta << endl;
+                goto Beg_USD;}  answer = kiekis / USD_Pirkti;
+            cout << valiuta << " " << kiekis << " = " << answer << " Eur" << endl;
 
         }else if (valiuta == "INR") {
             cout << "1 EUR = " << INR_Pirkti << " INR" <<endl;
@@ -141,14 +141,14 @@ int main() {
             cout << "Kiek nori pirkti " << valiuta << " kiekis?" <<endl;
             cin>>kiekis;       if (kiekis <= 0) {
                 cout << "Iveskite daugiau 0" <<endl;
-                goto Beg_INR;}  answer = INR_Pirkti * kiekis;
-            cout << "Eur "<< kiekis << " = " << answer << valiuta << endl;
+                goto Beg_INR;}  answer = kiekis / INR_Pirkti;
+            cout << valiuta << " " << kiekis << " = " << answer << " Eur" << endl;
 
         }else {
             cout << "Tokios valiutos nera" <<endl;
             goto beggining;
         }}
-    void Pirkimas_FUNKCIJA (string valiuta) {
+    void Pardavimas_FUNKCIJA (string valiuta) {
         double kiekis, answer;
         cout << "Pasirinkite valiuta" << endl;
         beggining:
@@ -160,8 +160,8 @@ int main() {
                     cout << "Kiek nori parduoti " << valiuta << " kiekis?" <<endl;
             cin>>kiekis;       if (kiekis <= 0) {
                 cout << "Iveskite daugiau 0" <<endl;
-                goto Beg_GBP;}      answer = GBP_Parduoti * kiekis;
-            cout << "Eur "<< kiekis << " = " << answer << valiuta << endl;
+                goto Beg_GBP;}      answer = kiekis / GBP_Parduoti;
+            cout << valiuta << " " << kiekis << " = " << answer << " Eur" << endl;
 
         }else if (valiuta == "USD") {
             cout << "1 EUR = " << USD_Parduoti << " USD" <<endl;
@@ -169,8 +169,8 @@ int main() {
             cout << "Kiek nori parduoti " << valiuta << " kiekis?" <<endl;
             cin>>kiekis;       if (kiekis <= 0) {
                 cout << "Iveskite daugiau 0" <<endl;
-                goto Beg_USD;}  answer = USD_Parduoti * kiekis;
-            cout << "Eur "<< kiekis << " = " << answer << valiuta << endl;
+                goto Beg_USD;}  answer = kiekis / USD_Parduoti;
+            cout << valiuta << " " << kiekis << " = " << answer << " Eur" << endl;
 
         }else if (valiuta == "INR") {
             cout << "1 EUR = " << INR_Parduoti << " INR" <<endl;
@@ -178,8 +178,8 @@ int main() {
             cout << "Kiek nori parduoti " << valiuta << " kiekis?" <<endl;
             cin>>kiekis;       if (kiekis <= 0) {
                 cout << "Iveskite daugiau 0" <<endl;
-                goto Beg_INR;}  answer = INR_Parduoti * kiekis;
-            cout << "Eur "<< kiekis << " = " << answer << valiuta << endl;
+                goto Beg_INR;}  answer = kiekis / INR_Parduoti;
+            cout << valiuta << " " << kiekis << " = " << answer << " Eur" << endl;
 
         }else {
             cout << "Tokios valiutos nera" <<endl;
