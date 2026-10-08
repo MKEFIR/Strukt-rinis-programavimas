@@ -29,57 +29,61 @@ void Pirkimas_FUNKCIJA();
 
 
 int main() {
-string valiuta;
+    string valiuta;
 
 
 
 
- int meniu = 0;
+    int meniu = 0, testi=0;
     // meniu - pasirinkimas meniu /
 
-////////////////////////////////////////////////
-
+    ////////////////////////////////////////////////
+again:
     cout << "\n-----  MENIU -----\n";
     cout << "Galimos valiutos: \nEur, GBP, USD INR\n";
     cout << "1. Palyginti valiuta\n";
     cout << "2. Pirkti  valiuta\n";
     cout << "3. Parduoti valiuta\n";
     cout << "0. Baigti programa\n";
+    beggining:
     cout << "\nPasirinkite funkcija:\n";
     cin >> meniu;
 
-  cout<<endl;
-////////////////////////////////////////////////
-switch (meniu) {
-    case 1:
-        cout<<"-  Valiuto palyginimas  -"<<endl<<endl;
-        Palyginimas_FUNKCIJA (valiuta);
-        break;
-    case 2:
-        cout<<"-  Valiuto  pirkimas  -"<<endl;
-        Pardavimas_FUNKCIJA( valiuta);
-        break;
-    case 3:
-        cout<<"-  Valiuto pardavimas  -"<<endl;
+    cout<<endl;
+    ////////////////////////////////////////////////
 
-        break;
+    switch (meniu) {
+        case 1:
+            cout<<"-  Valiuto palyginimas  -"<<endl<<endl;
+            Palyginimas_FUNKCIJA (valiuta);
+            break;
+        case 2:
+            cout<<"-  Valiuto  pirkimas  -"<<endl;
+            Pardavimas_FUNKCIJA( valiuta);
+            break;
+        case 3:
+            cout<<"-  Valiuto pardavimas  -"<<endl;
 
-    case 0:
-        cout<<"Aciu kad naudojates musu paslaugus"<<endl;
+            break;
 
-        break;
-    default:
-        cout<<"-  Tokios operacijos nera  -"<<endl;
-}
+        case 0:
+            cout<<"Aciu kad naudojates musu paslaugus"<<endl;
+            break;
+        default:
+            cout<<"-  Tokios operacijos nera  -"<<endl;
+            goto beggining;
+    }
 
-
-
-
-
-
-
-
-
+    cout <<endl<<endl<< "Norite atlikti kita operacija?" <<endl;
+    cout << "0 -> NE\n1 -> TAIP" <<endl;
+    cin >> testi;
+    if (testi==0) {
+        return testi;
+    } else if (testi==1) {
+        goto again;
+    }else {
+        cout << "---  Tokios operacijos nera  ---" <<endl;
+    }
 
 
 
@@ -89,43 +93,60 @@ switch (meniu) {
 
 ///////Funkcijos////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Palyginimas_FUNKCIJA (string valiuta) {
-bool temp = false;
+
 
 cout<< "Pasirinkite valiuta:" << endl;
-        cout<< "GBP, USD ar INR - ";
+    beggining:
+        cout<< "GBP, USD ar INR - " <<endl;
         cin>>valiuta;
-  //while (temp == false) {
         if (valiuta == "GBP") {
-            cout << "1 EUR = " << GBP_Bendras << " GBP"; temp = true;
+            cout << "1 EUR = " << GBP_Bendras << " GBP";
         }else if (valiuta == "USD") {
-            cout << "1 EUR = " << USD_Bendras << " USD"; temp = true;
+            cout << "1 EUR = " << USD_Bendras << " USD";
         }else if (valiuta == "INR") {
-            cout << "1 EUR = " << INR_Bendras << " INR"; temp = true;
+            cout << "1 EUR = " << INR_Bendras << " INR";
         }else {
-            cout << "Tokios valiutos nera";
-            //break;
+            cout << "Tokios valiutos nera"<<endl;
+            goto beggining;
         }
-   // }
-}/*
-void Pardavimas_FUNKCIJA () {
-double kiekis;
-"Pasirinkite valiuta ir kiekis:" << endl;
-        cout<< "GBP, USD ar INR - ";
+}
+void Pardavimas_FUNKCIJA (string valiuta) {
+double kiekis, answer;
+cout << "Pasirinkite valiuta" << endl;
+    beggining:
+        cout<< "GBP, USD ar INR - " <<endl;
         cin>>valiuta;
-        cin>>kiekis;
-        if (kiekis < 0) {
 if (valiuta == "GBP") {
-            cout << "1 EUR = " << GBP_Bendras << " GBP"; temp = true;
+            cout << "1 EUR = " << GBP_Pirkti << " GBP" <<endl;
+    Beg_GBP:
+            cout << "Kiek nori pirkti " << valiuta << " kiekis?" <<endl;
+cin>>kiekis;       if (kiekis <= 0) {
+    cout << "Iveskite daugiau 0" <<endl;
+    goto Beg_GBP;}      answer = GBP_Pirkti * kiekis;
+    cout << "Eur "<< kiekis << " = " << answer << valiuta << endl;
+
         }else if (valiuta == "USD") {
-            cout << "1 EUR = " << USD_Bendras << " USD"; temp = true;
+            cout << "1 EUR = " << USD_Pirkti << " USD" <<endl;
+            Beg_USD:
+            cout << "Kiek nori pirkti " << valiuta << " kiekis?" <<endl;
+            cin>>kiekis;       if (kiekis <= 0) {
+                cout << "Iveskite daugiau 0" <<endl;
+                goto Beg_USD;}  answer = USD_Pirkti * kiekis;
+            cout << "Eur "<< kiekis << " = " << answer << valiuta << endl;
+
         }else if (valiuta == "INR") {
-            cout << "1 EUR = " << INR_Bendras << " INR"; temp = true;
+            cout << "1 EUR = " << INR_Pirkti << " INR" <<endl;
+            Beg_INR:
+            cout << "Kiek nori pirkti " << valiuta << " kiekis?" <<endl;
+            cin>>kiekis;       if (kiekis <= 0) {
+                cout << "Iveskite daugiau 0" <<endl;
+                goto Beg_INR;}  answer = INR_Pirkti * kiekis;
+            cout << "Eur "<< kiekis << " = " << answer << valiuta << endl;
+
         }else {
-            cout << "Tokios valiutos nera";
-}}else{
-cout<< "Iveskite teigamia skaiciu";}
+            cout << "Tokios valiutos nera" <<endl;
+            goto beggining;
+}}/*
 void Pirkimas_FUNKCIJA () {
 
-}
-
-*/
+}*/
