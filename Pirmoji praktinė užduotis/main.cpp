@@ -23,18 +23,13 @@ const double INR_Parduoti  = 107.8546;
 using namespace std;
 
 
-void Palyginimas_FUNKCIJA(string valiuta);
-void Pardavimas_FUNKCIJA(string valiuta);
-void Pirkimas_FUNKCIJA(string valiuta);
+void Palyginimas_FUNKCIJA(int valiuta);
+void Pardavimas_FUNKCIJA(int valiuta);
+void Pirkimas_FUNKCIJA(int valiuta);
 
 
 int main() {
-    string valiuta;
-
-
-
-
-    int meniu = 0, testi=0;
+    int valiuta = 0, meniu = 0, testi=0;
     // meniu - pasirinkimas meniu /
 
     ////////////////////////////////////////////////
@@ -93,31 +88,45 @@ int main() {
 
 
     ///////Funkcijos////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    void Palyginimas_FUNKCIJA (string valiuta) {
-
-
-        cout<< "Pasirinkite valiuta:" << endl;
-        beggining:
-            cout<< "GBP, USD ar INR - " <<endl;
-        cin>>valiuta;
-        if (valiuta == "GBP") {
-            cout << "1 EUR = " << GBP_Bendras << " GBP";
-        }else if (valiuta == "USD") {
-            cout << "1 EUR = " << USD_Bendras << " USD";
-        }else if (valiuta == "INR") {
-            cout << "1 EUR = " << INR_Bendras << " INR";
+    void Palyginimas_FUNKCIJA (int valiuta) {
+    int side;
+    beggining:
+        cout << "Pasirinkite valiuta" << endl;
+    cout<< "GBP - 1\nUSD - 2\nINR - 3" <<endl;
+    cin>>valiuta;
+        if (valiuta == 1) {
+            cout << "Keisti GBP i EUR - 1\nKeisti EUR i GBP - 2"<<endl;
+                cin >> side;
+            if (side == 1){cout << "1 EUR = " << GBP_Bendras << " GBP" <<endl;}
+            else if (side == 2){cout << "1 GBP = " << 1/GBP_Bendras << " EUR" <<endl;}
+            else
+            {cout << "---  Tokios operacijos nera  ---" <<endl; goto beggining;}
+        }else if (valiuta == 2) {
+            cout << "Keisti USD i EUR - 1\nKeisti EUR i USD - 2"<<endl;
+            cin >> side;
+            if (side == 1){cout << "1 EUR = " << USD_Bendras << " USD" <<endl;}
+            else if (side == 2){cout << "1 USD = " << 1/USD_Bendras << " EUR" <<endl;}
+            else
+            {cout << "---  Tokios operacijos nera  ---" <<endl; goto beggining;}
+        }else if (valiuta == 3) {
+            cout << "Keisti INR i EUR - 1\nKeisti EUR i INR - 2"<<endl;
+            cin >> side;
+            if (side == 1){cout << "1 EUR = " << INR_Bendras << " INR" <<endl;}
+            else if (side == 2){cout << "1 INR = " << 1/INR_Bendras << " EUR" <<endl;}
+            else
+            {cout << "---  Tokios operacijos nera  ---" <<endl; goto beggining;}
         }else {
             cout << "Tokios valiutos nera"<<endl;
             goto beggining;
         }
     }
-    void Pirkimas_FUNKCIJA (string valiuta) {
+    void Pirkimas_FUNKCIJA (int valiuta) {
         double kiekis, answer;
     beggining:
         cout << "Pasirinkite valiuta" << endl;
-            cout<< "1. GBP\n2. USD\n3. INR" <<endl;
+    cout<< "GBP - 1\nUSD - 2\nINR - 3" <<endl;
         cin>>valiuta;
-        if (valiuta == "1") {
+        if (valiuta == 1) {
             cout << "1 EUR = " << GBP_Pirkti << " GBP" <<endl;
             Beg_GBP:
                     cout << "Kiek nori pirkti GBP kiekis?" <<endl;
@@ -126,7 +135,7 @@ int main() {
                 goto Beg_GBP;}      answer = kiekis /GBP_Pirkti;
             cout << "GBP " << kiekis << " = " << answer << " Eur" << endl;
 
-        }else if (valiuta == "2") {
+        }else if (valiuta == 2) {
             cout << "1 EUR = " << USD_Pirkti << " USD" <<endl;
             Beg_USD:
             cout << "Kiek nori pirkti USD kiekis?" <<endl;
@@ -135,7 +144,7 @@ int main() {
                 goto Beg_USD;}  answer = kiekis / USD_Pirkti;
             cout << "USD " << kiekis << " = " << answer << " Eur" << endl;
 
-        }else if (valiuta == "3") {
+        }else if (valiuta == 3) {
             cout << "1 EUR = " << INR_Pirkti << " INR" <<endl;
             Beg_INR:
             cout << "Kiek nori pirkti INR kiekis?" <<endl;
@@ -148,13 +157,13 @@ int main() {
             cout << "Tokios valiutos nera" <<endl;
             goto beggining;
         }}
-    void Pardavimas_FUNKCIJA (string valiuta) {
+    void Pardavimas_FUNKCIJA (int valiuta) {
         double kiekis, answer;
         beggining:
            cout << "Pasirinkite valiuta" << endl;
-        cout<< "1. GBP\n2. USD\n3. INR" <<endl;
+    cout<< "GBP - 1\nUSD - 2\nINR - 3" <<endl;
         cin>>valiuta;
-        if (valiuta == "1") {
+        if (valiuta == 1) {
             cout << "1 EUR = " << GBP_Parduoti << " GBP" <<endl;
             Beg_GBP:
                     cout << "Kiek nori parduoti GBP kiekis?" <<endl;
@@ -163,7 +172,7 @@ int main() {
                 goto Beg_GBP;}      answer = kiekis / GBP_Parduoti;
             cout << "GBP " << kiekis << " = " << answer << " Eur" << endl;
 
-        }else if (valiuta == "2") {
+        }else if (valiuta == 2) {
             cout << "1 EUR = " << USD_Parduoti << " USD" <<endl;
             Beg_USD:
             cout << "Kiek nori parduoti USD kiekis?" <<endl;
@@ -172,7 +181,7 @@ int main() {
                 goto Beg_USD;}  answer = kiekis / USD_Parduoti;
             cout << "USD " << kiekis << " = " << answer << " Eur" << endl;
 
-        }else if (valiuta == "3") {
+        }else if (valiuta == 3) {
             cout << "1 EUR = " << INR_Parduoti << " INR" <<endl;
             Beg_INR:
             cout << "Kiek nori parduoti INR kiekis?" <<endl;
