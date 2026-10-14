@@ -70,7 +70,7 @@ int main() {
             cout<<"Aciu kad naudojates musu paslaugus"<<endl;
             break;
         default:
-            cout<<"-  Tokios operacijos nera  -"<<endl;
+            cout<<"-  Tokios funkcijos nera  -"<<endl;
             goto beggining;}
 
             cout <<endl<<endl<< "//////////////////////////////" <<endl<< "Norite atlikti kita operacija?" <<endl;
@@ -113,36 +113,36 @@ int main() {
     }
     void Pirkimas_FUNKCIJA (string valiuta) {
         double kiekis, answer;
+    beggining:
         cout << "Pasirinkite valiuta" << endl;
-        beggining:
-            cout<< "GBP, USD ar INR - " <<endl;
+            cout<< "1. GBP\n2. USD\n3. INR" <<endl;
         cin>>valiuta;
-        if (valiuta == "GBP") {
+        if (valiuta == "1") {
             cout << "1 EUR = " << GBP_Pirkti << " GBP" <<endl;
             Beg_GBP:
-                    cout << "Kiek nori pirkti " << valiuta << " kiekis?" <<endl;
+                    cout << "Kiek nori pirkti GBP kiekis?" <<endl;
             cin>>kiekis;       if (kiekis <= 0) {
                 cout << "Iveskite daugiau 0" <<endl;
                 goto Beg_GBP;}      answer = kiekis /GBP_Pirkti;
-            cout << valiuta << " " << kiekis << " = " << answer << " Eur" << endl;
+            cout << "GBP " << kiekis << " = " << answer << " Eur" << endl;
 
-        }else if (valiuta == "USD") {
+        }else if (valiuta == "2") {
             cout << "1 EUR = " << USD_Pirkti << " USD" <<endl;
             Beg_USD:
-            cout << "Kiek nori pirkti " << valiuta << " kiekis?" <<endl;
+            cout << "Kiek nori pirkti USD kiekis?" <<endl;
             cin>>kiekis;       if (kiekis <= 0) {
                 cout << "Iveskite daugiau 0" <<endl;
                 goto Beg_USD;}  answer = kiekis / USD_Pirkti;
-            cout << valiuta << " " << kiekis << " = " << answer << " Eur" << endl;
+            cout << "USD " << kiekis << " = " << answer << " Eur" << endl;
 
-        }else if (valiuta == "INR") {
+        }else if (valiuta == "3") {
             cout << "1 EUR = " << INR_Pirkti << " INR" <<endl;
             Beg_INR:
-            cout << "Kiek nori pirkti " << valiuta << " kiekis?" <<endl;
+            cout << "Kiek nori pirkti INR kiekis?" <<endl;
             cin>>kiekis;       if (kiekis <= 0) {
                 cout << "Iveskite daugiau 0" <<endl;
                 goto Beg_INR;}  answer = kiekis / INR_Pirkti;
-            cout << valiuta << " " << kiekis << " = " << answer << " Eur" << endl;
+            cout << "INR " << kiekis << " = " << answer << " Eur" << endl;
 
         }else {
             cout << "Tokios valiutos nera" <<endl;
@@ -150,36 +150,36 @@ int main() {
         }}
     void Pardavimas_FUNKCIJA (string valiuta) {
         double kiekis, answer;
-        cout << "Pasirinkite valiuta" << endl;
         beggining:
-            cout<< "GBP, USD ar INR - " <<endl;
+           cout << "Pasirinkite valiuta" << endl;
+        cout<< "1. GBP\n2. USD\n3. INR" <<endl;
         cin>>valiuta;
-        if (valiuta == "GBP") {
+        if (valiuta == "1") {
             cout << "1 EUR = " << GBP_Parduoti << " GBP" <<endl;
             Beg_GBP:
-                    cout << "Kiek nori parduoti " << valiuta << " kiekis?" <<endl;
+                    cout << "Kiek nori parduoti GBP kiekis?" <<endl;
             cin>>kiekis;       if (kiekis <= 0) {
                 cout << "Iveskite daugiau 0" <<endl;
                 goto Beg_GBP;}      answer = kiekis / GBP_Parduoti;
-            cout << valiuta << " " << kiekis << " = " << answer << " Eur" << endl;
+            cout << "GBP " << kiekis << " = " << answer << " Eur" << endl;
 
-        }else if (valiuta == "USD") {
+        }else if (valiuta == "2") {
             cout << "1 EUR = " << USD_Parduoti << " USD" <<endl;
             Beg_USD:
-            cout << "Kiek nori parduoti " << valiuta << " kiekis?" <<endl;
+            cout << "Kiek nori parduoti USD kiekis?" <<endl;
             cin>>kiekis;       if (kiekis <= 0) {
                 cout << "Iveskite daugiau 0" <<endl;
                 goto Beg_USD;}  answer = kiekis / USD_Parduoti;
-            cout << valiuta << " " << kiekis << " = " << answer << " Eur" << endl;
+            cout << "USD " << kiekis << " = " << answer << " Eur" << endl;
 
-        }else if (valiuta == "INR") {
+        }else if (valiuta == "3") {
             cout << "1 EUR = " << INR_Parduoti << " INR" <<endl;
             Beg_INR:
-            cout << "Kiek nori parduoti " << valiuta << " kiekis?" <<endl;
+            cout << "Kiek nori parduoti INR kiekis?" <<endl;
             cin>>kiekis;       if (kiekis <= 0) {
                 cout << "Iveskite daugiau 0" <<endl;
                 goto Beg_INR;}  answer = kiekis / INR_Parduoti;
-            cout << valiuta << " " << kiekis << " = " << answer << " Eur" << endl;
+            cout << "INR " << kiekis << " = " << answer << " Eur" << endl;
 
         }else {
             cout << "Tokios valiutos nera" <<endl;
