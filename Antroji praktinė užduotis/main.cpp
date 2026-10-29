@@ -17,8 +17,7 @@ void vidutinis_Function (string NAMES[], int GRADES[][grade_max_count+1], int &c
 void pasalinti_Function (string NAMES[], int GRADES[][grade_max_count+1], int &count, int &n);
 
     int main() {
-        int count=0, n=0, meniu=0;
-        //int students, grade; //Students - studentu kiekis; Grades - studentu pazymiu kiekis
+        int count=0, n=0, meniu=0;  //count - kiek dabar studentu sarase
         string NAMES[stud_max]={};
         int GRADES[stud_max][grade_max_count+1]={0};
 
@@ -89,7 +88,7 @@ void irasiti_Function (string NAMES[], int GRADES[][grade_max_count+1], int &cou
             count += add_stud;      //add_stud naudojama kad galima prideti daugiau
             if (count>stud_max) {
                 cout<<"Studentu kiekis virs limito. Limitas - "<<stud_max<<endl;
-                count=now;    //griztem pries vistimo limita
+                count=now;    //griztem pries virsat limita
                 goto repeat;
             }
 
@@ -101,26 +100,26 @@ void irasiti_Function (string NAMES[], int GRADES[][grade_max_count+1], int &cou
                 getline(cin, NAMES[i]);
                 back1:
                     cout << "Pazymiu kiekis\n";
-                cin>>n;
-                if (n>grade_max_count) {
+                cin>>n;                     //rasikite tik vieno skaitmeni
+                if (n>grade_max_count) {    //ar ne virsam studentu limita
                     cout << "-- Maximalus imanoma pazymiu kiekis yra "<<grade_max_count<<" --\n";
                     goto back1;
                 }
                 GRADES[i][0] = n; cout<<"Pazymai ( "<<min_grade<<" - "<<max_grade<<" )\n";
                 for (int j = 1; j <= n; j++) {repeat1:
                 cin>>GRADES[i][j];
-                    if (GRADES[i][j]<min_grade || GRADES[i][j]>max_grade) {
+                    if (GRADES[i][j]<min_grade || GRADES[i][j]>max_grade) { //ar irasom gerai pazymius
                         cout << format("Pazymis turi buti tarp {0} ir {1}\n", min_grade, max_grade);
                         goto repeat1;}
                 }}
     }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void perzureti_Function (string NAMES[], int GRADES[][grade_max_count+1], int &count, int &n){
-        if (count==0) {
+        if (count==0) {             //jeigu sarase nieko nera
             cout << "---  Sarasas Tuscias  ---\n";
         } else{
 
-        for (int k = 0; k < count; k++) {
+        for (int k = 0; k < count; k++) {   //israso visas sarasas
             cout<<endl<< "\nStudentas Nr." << k+1 << endl;
             cout << "Vardas:" << NAMES[k]<<endl;
             n=GRADES[k][0];cout<<"Pazymius:";
@@ -153,8 +152,8 @@ void perzureti_konk_Function (string NAMES[], int GRADES[][grade_max_count+1], i
                     for (int l = 1; l <= x; l++) {
                         cout<<" "<<GRADES[n][l];
                     }}
-            again:
-    cout << "\n\nAr norit dar perzureti? (y/n)\n";
+            again:                  //galima dar pakartoti, ne iseidami is funkcijos
+    cout << "\n\nAr norit dar pakartoti? (y/n)\n";
             cin>>testi;
             if (testi=='y') {
                 goto back;
@@ -173,7 +172,7 @@ void atnaujinti_Function (string NAMES[], int GRADES[][grade_max_count+1], int &
             cout << "\n\nTokio studento nera\n";
             goto back;}
         n--;
-        again1:
+        again1:      //klause jeigu bloga studentu numera buve ivestas
         cout <<"Tikrai norite atnaujinti "<< NAMES[n]<<" pazymius?\n (y/n)\n";
         cin>>testi;
         if (testi=='y') {
@@ -201,7 +200,7 @@ void atnaujinti_Function (string NAMES[], int GRADES[][grade_max_count+1], int &
                     cout << format("Pazymis turi buti tarp {0} ir {1}\n", min_grade, max_grade);
                     goto repeat;}}
 
-
+                //rodo rezultata
             cout << "\n\nVardas:" << NAMES[n]<<endl;
             x=GRADES[n][0];cout<<"Pazymius:";
             if (x==0) {
@@ -213,7 +212,7 @@ void atnaujinti_Function (string NAMES[], int GRADES[][grade_max_count+1], int &
         }else if (testi!='y' && testi!='n'){
             cout <<"Tokios komandos nera\n"; goto again1;}
      again:
-cout << "\n\nAr norit dar atnaujinti? (y/n)\n";
+cout << "\n\nAr norit dar pakartoti? (y/n)\n";
      cin>>testi;
      if (testi=='y') {
          goto back;
@@ -277,7 +276,7 @@ void pasalinti_Function (string NAMES[], int GRADES[][grade_max_count+1], int &c
                     Temp[k] = NAMES[k+1];
                 NAMES[k] = Temp[k];
                 temp=GRADES[k][0];
-                GRADES[k][0]=0;
+                GRADES[k][0]=0;//vietu pazymiu vel irasa 0, kad jeigu pasalintas mokinys turi daugiau nei kitas
                 for (int j = 1; j <= temp; j++) {
                     GRADES[k][j]=0;
                 }
